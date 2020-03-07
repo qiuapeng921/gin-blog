@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"gin-blog/helpers/logging"
-	"gin-blog/helpers/pool"
+	"gin-blog/helpers/pool/gredis"
+	"gin-blog/helpers/pool/grom"
 	"gin-blog/helpers/system"
 	"gin-blog/routers"
 	"github.com/gin-gonic/gin"
@@ -14,7 +15,8 @@ import (
 
 func init() {
 	system.SetUp()
-	pool.SetUp()
+	grom.SetUp()
+	_ = gredis.SetupRedis()
 	logging.Setup()
 }
 
@@ -36,7 +38,6 @@ func main() {
 		WriteTimeout:   60,
 		MaxHeaderBytes: maxHeaderBytes,
 	}
-
-	log.Printf("[info] start http server listening %s", endPoint)
+	log.Printf("[info] start response server listening %s", endPoint)
 	_ = server.ListenAndServe()
 }

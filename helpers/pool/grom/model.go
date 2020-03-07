@@ -1,4 +1,4 @@
-package pool
+package grom
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"log"
 	"os"
+	"strconv"
 )
 
 var db *gorm.DB
@@ -17,17 +18,19 @@ func SetUp() {
 		os.Getenv("DB_HOST"),
 		os.Getenv("DB_DATABASE"),
 		os.Getenv("DB_CHARSET"))
-	fmt.Println(database)
-	db, err := gorm.Open("mysql", database)
+	var err error
+	db, err = gorm.Open("mysql", database)
 	if err != nil {
 		log.Println(err.Error())
 		panic(err.Error())
 	}
-	defer db.Close()
+	maxIdle,_:= strconv.Atoi(os.Getenv("DB_MAX_IDLE"))
+	maxOpen,_:= strconv.Atoi(os.Getenv("DB_MAX_OPEN"))
+	db.DB().SetMaxIdleConns(maxIdle)
+	db.DB().SetMaxOpenConns(maxOpen)
 	db.LogMode(true)
-	log.Println("数据库连接成功")
 }
 
-func GetDB() *gorm.DB {
+func GetConn() *gorm.DB {
 	return db
 }

@@ -10,9 +10,28 @@
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/user/info": {
+            "get": {
+                "description": "获取指定ID记录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/user/list": {
             "get": {
-                "description": "get record by ID",
+                "description": "获取所有用户",
                 "consumes": [
                     "application/json"
                 ],

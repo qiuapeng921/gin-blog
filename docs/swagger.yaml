@@ -7,11 +7,23 @@ info:
   title: Golang Gin API
   version: "1.0"
 paths:
+  /user/info:
+    get:
+      consumes:
+      - application/json
+      description: 获取指定ID记录
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
   /user/list:
     get:
       consumes:
       - application/json
-      description: get record by ID
+      description: 获取所有用户
       produces:
       - application/json
       responses:

@@ -1,4 +1,4 @@
-package test
+package apiMiddleware
 
 import (
 	"fmt"
@@ -7,6 +7,6 @@ import (
 
 func JWT() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		fmt.Println("请求地址为：", c.Request.URL)
+		fmt.Println("requestUrl：", c.Request.URL)
 	}
 }
