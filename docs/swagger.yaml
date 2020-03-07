@@ -1,0 +1,22 @@
+basePath: '{{.BasePath}}'
+host: '{{.Host}}'
+info:
+  contact: {}
+  description: An example of gin
+  license: {}
+  title: Golang Gin API
+  version: "1.0"
+paths:
+  /user/list:
+    get:
+      consumes:
+      - application/json
+      description: get record by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+swagger: "2.0"
