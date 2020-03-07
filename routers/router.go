@@ -9,13 +9,16 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
-func InitRouter() *gin.Engine {
-	router := gin.New()
+func SetupRouter(router *gin.Engine)  {
+	router = gin.New()
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 	router.Use(apiMiddleware.JWT())
 
+
 	router.GET("/", api.Index)
+	router.GET("/index", api.Index)
+
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	user := router.Group("/user")
@@ -23,6 +26,4 @@ func InitRouter() *gin.Engine {
 		user.GET("/list", api.UserList)
 		user.GET("/info", api.UserInfo)
 	}
-
-	return router
 }

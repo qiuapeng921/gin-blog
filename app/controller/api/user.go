@@ -1,11 +1,13 @@
 package api
 
 import (
+	"fmt"
 	"gin-blog/app/consts"
-	"gin-blog/app/service/user_service"
+	"gin-blog/app/models"
 	"gin-blog/helpers/response"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"strconv"
 )
 
 // @Description 获取所有用户
@@ -13,10 +15,12 @@ import (
 // @Produce json
 // @Success 200 {string} string	"ok"
 // @Router /user/list [get]
-func UserList(context *gin.Context) {
-	app := response.Gin{Context: context}
-	result := user_service.GetUserAll()
-	app.Response(http.StatusOK, consts.SUCCESS, result)
+func UserList(c *gin.Context) {
+	result, _ := models.GetUserALl()
+	fmt.Println(result)
+	c.JSON(200, gin.H{
+		"data": result,
+	})
 }
 
 // @Description 获取指定ID记录
@@ -24,9 +28,10 @@ func UserList(context *gin.Context) {
 // @Produce json
 // @Success 200 {string} string	"ok"
 // @Router /user/info [get]
-func UserInfo(context *gin.Context) {
-	app := response.Gin{Context: context}
-	id := context.GetInt("id")
-	result := user_service.GetOne(id)
-	app.Response(http.StatusOK, consts.SUCCESS, result)
+func UserInfo(c *gin.Context) {
+	id, _ := c.GetQuery("id")
+	userId, _ := strconv.Atoi(id)
+	result, _ := models.GetOneById(userId)
+	fmt.Println(result)
+	response.WrapContext(c).Response(http.StatusOK, consts.SUCCESS, result)
 }

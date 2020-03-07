@@ -5,8 +5,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Gin struct {
-	Context *gin.Context
+// Wrapper include context
+type Wrapper struct {
+	*gin.Context
+}
+
+// WrapContext
+func WrapContext(c *gin.Context) *Wrapper {
+	return &Wrapper{c}
 }
 
 type Response struct {
@@ -16,8 +22,8 @@ type Response struct {
 }
 
 // Response setting gin.JSON
-func (g *Gin) Response(httpCode, errCode int, data interface{}) {
-	g.Context.JSON(httpCode, Response{
+func (wrapper *Wrapper) Response(httpCode, errCode int, data interface{}) {
+	wrapper.JSON(httpCode, Response{
 		Code: errCode,
 		Msg:  consts.GetMsg(errCode),
 		Data: data,

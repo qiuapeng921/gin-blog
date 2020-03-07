@@ -16,14 +16,17 @@ type UserModel struct {
 func (UserModel) TableName() string {
 	return "user"
 }
-func GetOneById(id int) (users UserModel) {
+
+func GetUserALl() ([]*UserModel, error) {
 	db := grom.GetConn()
-	db.Where("account=?", "admin1").Find(&users)
-	return
+	var users []*UserModel
+	err := db.Select("id,account,status").Find(&users).Error
+	return users, err
 }
 
-func GetUserALl() (users []UserModel) {
+func GetOneById(id int) (*UserModel, error) {
 	db := grom.GetConn()
-	db.Select("id,account,status").Find(&users)
-	return users
+	var users *UserModel
+	err := db.Where("account=?", "admin1").Find(&users).Error
+	return users, err
 }
