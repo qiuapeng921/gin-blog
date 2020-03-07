@@ -16,17 +16,17 @@ func WrapContext(c *gin.Context) *Wrapper {
 }
 
 type Response struct {
-	Code int         `json:"code"`
-	Msg  string      `json:"msg"`
-	Data interface{} `json:"data"`
+	Code    int         `json:"code"`
+	Message string      `json:"message"`
+	Data    interface{} `json:"data"`
 }
 
 // Response setting gin.JSON
 func (wrapper *Wrapper) Response(httpCode, errCode int, data interface{}) {
 	wrapper.JSON(httpCode, Response{
-		Code: errCode,
-		Msg:  consts.GetMsg(errCode),
-		Data: data,
+		Code:    errCode,
+		Message: consts.GetMsg(errCode),
+		Data:    data,
 	})
 	return
 }

@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"gin-blog/app/consts"
 	"gin-blog/app/models"
 	"gin-blog/helpers/response"
@@ -17,10 +16,7 @@ import (
 // @Router /user/list [get]
 func UserList(c *gin.Context) {
 	result, _ := models.GetUserALl()
-	fmt.Println(result)
-	c.JSON(200, gin.H{
-		"data": result,
-	})
+	response.WrapContext(c).Response(http.StatusOK, consts.SUCCESS, result)
 }
 
 // @Description 获取指定ID记录
@@ -32,6 +28,5 @@ func UserInfo(c *gin.Context) {
 	id, _ := c.GetQuery("id")
 	userId, _ := strconv.Atoi(id)
 	result, _ := models.GetOneById(userId)
-	fmt.Println(result)
 	response.WrapContext(c).Response(http.StatusOK, consts.SUCCESS, result)
 }

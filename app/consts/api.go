@@ -6,14 +6,14 @@ const (
 )
 
 var MsgFlags = map[int]string{
-	SUCCESS: "ok",
-	ERROR:   "fail",
+	SUCCESS: "success",
+	ERROR:   "error",
 }
 
 func GetMsg(code int) string {
-	msg, ok := MsgFlags[code]
+	message, ok := MsgFlags[code]
 	if ok {
-		return msg
+		return message
 	}
 
 	return MsgFlags[ERROR]

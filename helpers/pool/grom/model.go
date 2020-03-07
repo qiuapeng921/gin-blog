@@ -12,7 +12,7 @@ import (
 var db *gorm.DB
 
 func SetUp() {
-	database := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=%s",
+	database := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=%s&parseTime=True&loc=Local",
 		os.Getenv("DB_USERNAME"),
 		os.Getenv("DB_PASSWORD"),
 		os.Getenv("DB_HOST"),
@@ -24,11 +24,12 @@ func SetUp() {
 		log.Println(err.Error())
 		panic(err.Error())
 	}
+	db.SingularTable(true)
 	maxIdle,_:= strconv.Atoi(os.Getenv("DB_MAX_IDLE"))
 	maxOpen,_:= strconv.Atoi(os.Getenv("DB_MAX_OPEN"))
 	db.DB().SetMaxIdleConns(maxIdle)
 	db.DB().SetMaxOpenConns(maxOpen)
-	db.LogMode(true)
+	//db.LogMode(true)
 }
 
 func GetConn() *gorm.DB {

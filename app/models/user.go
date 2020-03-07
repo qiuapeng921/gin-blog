@@ -17,16 +17,16 @@ func (UserModel) TableName() string {
 	return "user"
 }
 
-func GetUserALl() ([]*UserModel, error) {
+func GetUserALl() ([]UserModel, error) {
 	db := grom.GetConn()
-	var users []*UserModel
-	err := db.Select("id,account,status").Find(&users).Error
+	var users []UserModel
+	err := db.Select("id,account,status,create_time,update_time").Find(&users).Error
 	return users, err
 }
 
-func GetOneById(id int) (*UserModel, error) {
+func GetOneById(id int) (UserModel, error) {
 	db := grom.GetConn()
-	var users *UserModel
-	err := db.Where("account=?", "admin1").Find(&users).Error
+	var users UserModel
+	err := db.Where("id=?", id).Find(&users).Error
 	return users, err
 }
