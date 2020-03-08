@@ -24,7 +24,5 @@ func SetupRouter(router *gin.Engine) {
 	router.GET("/", api.Index)
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	router.GET("/ws", func(c *gin.Context) {
-		socket.WsHandler(c.Writer, c.Request)
-	})
+	router.GET("/ws", socket.WsHandler)
 }

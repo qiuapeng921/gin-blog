@@ -1,18 +1,12 @@
 package socket
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
 	"time"
 )
-
-// Msg 消息结构体
-type Msg struct {
-	Type string      `json:"type" v:"type@required#消息类型不能为空"`
-	Data interface{} `json:"data" v:""`
-	From string      `json:"name" v:""`
-}
 
 var wsUpGrader = websocket.Upgrader{
 	ReadBufferSize:   1024,
@@ -24,26 +18,18 @@ var wsUpGrader = websocket.Upgrader{
 	},
 }
 
-type socketUsers struct {
-	name string
-	conn *websocket.Conn
-}
-
-func WsHandler(w http.ResponseWriter, r *http.Request) {
-	var conn *websocket.Conn
-	var err error
-	conn, err = wsUpGrader.Upgrade(w, r, nil)
+func WsHandler(c *gin.Context) {
+	conn, err := opOpen(c.Writer, c.Request)
 	if err != nil {
-		log.Println("websocket upgrade err:", err.Error())
+		log.Println(err.Error())
 		return
 	}
 
-	_ = conn.WriteMessage(websocket.TextMessage, []byte("welcome"))
-	go sendTime(conn)
 	for {
 		msgType, msg, err := conn.ReadMessage()
 		if err != nil {
 			log.Println("用户下线", err.Error())
+			onClone()
 			break
 		}
 		log.Println(string(msg))
@@ -60,6 +46,21 @@ func WsHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
+}
+
+func opOpen(response http.ResponseWriter, request *http.Request) (conn *websocket.Conn, err error) {
+	conn, err = wsUpGrader.Upgrade(response, request, nil)
+	if err != nil {
+		log.Println("websocket upgrade err:", err.Error())
+		return
+	}
+	_ = conn.WriteMessage(websocket.TextMessage, []byte("welcome"))
+	go sendTime(conn)
+	return
+}
+
+func onClone() {
+
 }
 
 func sendTime(conn *websocket.Conn) {
