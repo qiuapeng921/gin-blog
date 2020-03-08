@@ -2,7 +2,7 @@
 
 ## 安装
 ```
-git clone github.com/qiuapeng921/gin-blog $GOPATH/src/gin-blog
+git clone https://github.com/qiuapeng921/gin-blog $GOPATH/src/gin-blog
 ```
 
 ## 如何运行

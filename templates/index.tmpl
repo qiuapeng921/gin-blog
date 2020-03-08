@@ -60,7 +60,9 @@
         </div>
         <div id="socket" style="display: none">
             <h3>websocket已启动</h3>
-            <p class="socketWelcome"></p>
+            <p id="socketWelcome"></p>
+            <h3>当前时间：</h3>
+            <p id="socketTime"></p>
         </div>
     </div>
 </div>
@@ -77,8 +79,9 @@
             let received_msg = event.data;
             if (received_msg === "welcome") {
                 document.getElementById("socket").style.display = "block";
-                document.getElementById("socketWelcome").innerText = event.data;
+                document.getElementById("socketWelcome").innerText = event.data + " to you";
             }
+            document.getElementById("socketTime").innerText = event.data;
             console.log("数据已接收...", received_msg);
         };
         ws.onclose = function () {
