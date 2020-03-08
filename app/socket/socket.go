@@ -29,7 +29,7 @@ func WsHandler(c *gin.Context) {
 		msgType, msg, err := conn.ReadMessage()
 		if err != nil {
 			log.Println("用户下线", err.Error())
-			onClone()
+			onClone(conn)
 			break
 		}
 		log.Println(string(msg))
@@ -59,7 +59,7 @@ func opOpen(response http.ResponseWriter, request *http.Request) (conn *websocke
 	return
 }
 
-func onClone() {
+func onClone(conn *websocket.Conn) {
 
 }
 
