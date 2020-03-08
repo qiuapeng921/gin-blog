@@ -24,9 +24,13 @@ var wsUpGrader = websocket.Upgrader{
 	},
 }
 
-var conn *websocket.Conn
+type socketUsers struct {
+	name string
+	conn *websocket.Conn
+}
 
 func WsHandler(w http.ResponseWriter, r *http.Request) {
+	var conn *websocket.Conn
 	var err error
 	conn, err = wsUpGrader.Upgrade(w, r, nil)
 	if err != nil {
@@ -35,7 +39,7 @@ func WsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	_ = conn.WriteMessage(websocket.TextMessage, []byte("welcome"))
-	go sendTime()
+	go sendTime(conn)
 	for {
 		msgType, msg, err := conn.ReadMessage()
 		if err != nil {
@@ -48,21 +52,20 @@ func WsHandler(w http.ResponseWriter, r *http.Request) {
 			if err != nil {
 				break
 			}
-			return
-		}
-		// todo：业务操作
-		err = conn.WriteMessage(msgType, msg)
-		if err != nil {
-			break
+		} else {
+			// todo：业务操作
+			err = conn.WriteMessage(msgType, msg)
+			if err != nil {
+				break
+			}
 		}
 	}
 }
 
-func sendTime()  {
+func sendTime(conn *websocket.Conn) {
 	for {
 		time.Sleep(1 * time.Second)
 		nowTime := time.Now().Format("2006-01-02 15:04:05")
-		log.Println(nowTime)
 		_ = conn.WriteMessage(websocket.TextMessage, []byte(nowTime))
 	}
 }
