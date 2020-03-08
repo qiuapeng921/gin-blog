@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gin-blog/crontab"
+	"gin-blog/app/crontab"
 	"gin-blog/helpers/logging"
 	"gin-blog/helpers/pool/gredis"
 	"gin-blog/helpers/pool/grom"

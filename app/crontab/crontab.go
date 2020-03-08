@@ -1,7 +1,7 @@
 package crontab
 
 import (
-	"gin-blog/crontab/cronfunc"
+	"gin-blog/app/crontab/cronfunc"
 	"github.com/robfig/cron"
 )
 

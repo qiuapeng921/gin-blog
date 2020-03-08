@@ -42,3 +42,5 @@ go run main.go
 - logging
 - Cron
 - Redis
+- Socket
+- Templates

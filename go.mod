@@ -8,6 +8,7 @@ require (
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/golang/protobuf v1.3.4 // indirect
 	github.com/gomodule/redigo v2.0.0+incompatible
+	github.com/gorilla/websocket v1.4.1
 	github.com/jinzhu/gorm v1.9.12
 	github.com/joho/godotenv v1.3.0
 	github.com/json-iterator/go v1.1.9 // indirect
@@ -18,7 +19,6 @@ require (
 	github.com/swaggo/swag v1.5.1
 	golang.org/x/sys v0.0.0-20200302150141-5c8b2ff67527 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0 // indirect
-	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
 
 go 1.13
