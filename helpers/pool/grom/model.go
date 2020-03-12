@@ -29,7 +29,7 @@ func SetUp() {
 	maxOpen,_:= strconv.Atoi(os.Getenv("DB_MAX_OPEN"))
 	db.DB().SetMaxIdleConns(maxIdle)
 	db.DB().SetMaxOpenConns(maxOpen)
-	//db.LogMode(true)
+	db.LogMode(true)
 }
 
 func GetConn() *gorm.DB {
