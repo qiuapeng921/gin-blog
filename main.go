@@ -2,11 +2,8 @@ package main
 
 import (
 	"fmt"
-	"gin-blog/app/crontab"
-	"gin-blog/helpers/logging"
-	"gin-blog/helpers/pool/gredis"
-	"gin-blog/helpers/pool/grom"
 	"gin-blog/helpers/system"
+	"gin-blog/helpers/templates"
 	"gin-blog/routers"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -17,10 +14,6 @@ import (
 
 func init() {
 	system.SetUp()
-	logging.Setup()
-	grom.SetUp()
-	gredis.SetupRedis()
-	crontab.InitCronTab()
 }
 
 func main() {
@@ -28,12 +21,10 @@ func main() {
 
 	engine := gin.New()
 	// 加载模板和资源文件
-	engine.LoadHTMLGlob("templates/*")
-	engine.Static("/static", "./public/")
-	engine.StaticFile("/favicon.ico", "./public/favicon.ico")
-
+	templates.InitTemplate(engine)
 	// 设置路由
 	routers.SetupRouter(engine)
+
 	endPoint := fmt.Sprintf(":%s", os.Getenv("HTTP_PORT"))
 	maxHeaderBytes := 1 << 20
 

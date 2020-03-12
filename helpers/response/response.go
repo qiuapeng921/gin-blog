@@ -31,6 +31,6 @@ func (wrapper *Wrapper) Response(httpCode, errCode int, data interface{}) {
 }
 
 func (wrapper *Wrapper) View(name string, data interface{}) {
-	wrapper.HTML(200, fmt.Sprintf("%s.tmpl", name), data)
+	wrapper.HTML(200, fmt.Sprintf("%s.html", name), data)
 	return
 }
