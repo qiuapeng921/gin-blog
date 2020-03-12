@@ -13,9 +13,6 @@ func SetupRouter(router *gin.Engine) {
 	router.Use(gin.Recovery())
 	router.Use(middleware.JWT())
 
-	router.Static("/static", "./public")
-	router.StaticFile("/favicon.ico", "./public/favicon.ico")
-
 	router.GET("/", admin.Index)
 	router.GET("/ws", socket.WsHandler)
 }

@@ -12,6 +12,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 func init() {
@@ -22,15 +23,14 @@ func init() {
 	crontab.InitCronTab()
 }
 
-// @title Golang Gin API
-// @version 1.0
-// @description An example of gin
 func main() {
 	gin.SetMode(os.Getenv("APP_ENV"))
 
 	engine := gin.New()
-	// 加载模板
+	// 加载模板和资源文件
 	engine.LoadHTMLGlob("templates/*")
+	engine.Static("/static", "./public/")
+	engine.StaticFile("/favicon.ico", "./public/favicon.ico")
 
 	// 设置路由
 	routers.SetupRouter(engine)
@@ -40,8 +40,8 @@ func main() {
 	server := &http.Server{
 		Addr:           endPoint,
 		Handler:        engine,
-		ReadTimeout:    60,
-		WriteTimeout:   60,
+		ReadTimeout:    10 * time.Second,
+		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: maxHeaderBytes,
 	}
 
