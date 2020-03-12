@@ -40,8 +40,8 @@ func main() {
 	server := &http.Server{
 		Addr:           endPoint,
 		Handler:        engine,
-		ReadTimeout:    60,
-		WriteTimeout:   60,
+		ReadTimeout:    10 * time.Second,
+		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: maxHeaderBytes,
 	}
 
