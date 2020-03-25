@@ -25,7 +25,7 @@ func main() {
 	// 设置路由
 	routers.SetupRouter(engine)
 
-	endPoint := fmt.Sprintf(":%s", os.Getenv("HTTP_PORT"))
+	endPoint := fmt.Sprintf("%s:%s", os.Getenv("HTTP_ADDRESS"), os.Getenv("HTTP_PORT"))
 	maxHeaderBytes := 1 << 20
 
 	server := &http.Server{
@@ -36,12 +36,8 @@ func main() {
 		MaxHeaderBytes: maxHeaderBytes,
 	}
 
-	log.Println("|-----------------------------------|")
-	log.Println("|             gin-blog              |")
-	log.Println("|-----------------------------------|")
-	log.Println("|  Go Http Server Start Successful  |")
-	log.Println("|    Port" + endPoint + "     Pid:" + fmt.Sprintf("%d", os.Getpid()) + "        |")
-	log.Println("|-----------------------------------|")
+	log.Println("Go Http Server Start Successful")
+	log.Println("Port:" + endPoint + ",Pid:" + fmt.Sprintf("%d", os.Getpid()))
 
 	_ = server.ListenAndServe()
 }
