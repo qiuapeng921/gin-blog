@@ -19,7 +19,7 @@ func init() {
 func main() {
 	gin.SetMode(os.Getenv("APP_ENV"))
 
-	engine := gin.New()
+	engine := gin.Default()
 	// 加载模板和资源文件
 	templates.InitTemplate(engine)
 	// 设置路由

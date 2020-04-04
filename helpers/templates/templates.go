@@ -8,9 +8,9 @@ import (
 )
 
 func InitTemplate(router *gin.Engine) {
-	router.Static("/static", "./public/")
+	router.Static("/static", "./public/assets")
 	router.StaticFile("/favicon.ico", "./public/favicon.ico")
-	router.LoadHTMLGlob("templates/*")
+	router.LoadHTMLGlob("templates/*/**")
 	// 自定义方法
 	router.SetFuncMap(template.FuncMap{
 		"formatAsDate": formatDate,
