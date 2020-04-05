@@ -15,7 +15,7 @@ func SetupRouter(router *gin.Engine) {
 	router.GET("/ws", socket.WsHandler)
 
 	router.NoRoute(func(context *gin.Context) {
-		response.Context(context).View("index", gin.H{
+		response.Context(context).View("welcome", gin.H{
 			"name": "GinFrame",
 		})
 	})
