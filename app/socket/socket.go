@@ -19,7 +19,7 @@ var wsUpGrader = websocket.Upgrader{
 }
 
 func WsHandler(c *gin.Context) {
-	conn, err := opOpen(c.Writer, c.Request)
+	conn, err := onOpen(c.Writer, c.Request)
 	if err != nil {
 		log.Println(err.Error())
 		return
@@ -28,7 +28,6 @@ func WsHandler(c *gin.Context) {
 	for {
 		msgType, msg, err := conn.ReadMessage()
 		if err != nil {
-			log.Println("用户下线", err.Error())
 			onClone(conn)
 			break
 		}
@@ -38,17 +37,16 @@ func WsHandler(c *gin.Context) {
 			if err != nil {
 				break
 			}
-		} else {
-			// todo：业务操作
-			err = conn.WriteMessage(msgType, msg)
-			if err != nil {
-				break
-			}
+		}
+		// todo：业务操作
+		err = onMessage(conn, msgType, string(msg))
+		if err != nil {
+			break
 		}
 	}
 }
 
-func opOpen(response http.ResponseWriter, request *http.Request) (conn *websocket.Conn, err error) {
+func onOpen(response http.ResponseWriter, request *http.Request) (conn *websocket.Conn, err error) {
 	conn, err = wsUpGrader.Upgrade(response, request, nil)
 	if err != nil {
 		log.Println("websocket upgrade err:", err.Error())
@@ -59,8 +57,13 @@ func opOpen(response http.ResponseWriter, request *http.Request) (conn *websocke
 	return
 }
 
-func onClone(conn *websocket.Conn) {
+func onMessage(conn *websocket.Conn, msgType int, data string) (err error) {
+	err = conn.WriteMessage(msgType, []byte(data))
+	return
+}
 
+func onClone(conn *websocket.Conn) {
+	log.Println("用户下线")
 }
 
 func sendTime(conn *websocket.Conn) {

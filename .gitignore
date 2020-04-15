@@ -1,5 +1,9 @@
 .idea/
 .DS_Store
 
+main.exe
+main
+gin-blog.exe
 .env
 runtime/*
+vendor

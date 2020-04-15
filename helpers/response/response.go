@@ -1,17 +1,16 @@
 package response
 
 import (
+	"fmt"
 	"gin-blog/app/consts"
 	"github.com/gin-gonic/gin"
 )
 
-// Wrapper include context
 type Wrapper struct {
 	*gin.Context
 }
 
-// WrapContext
-func WrapContext(c *gin.Context) *Wrapper {
+func Context(c *gin.Context) *Wrapper {
 	return &Wrapper{c}
 }
 
@@ -28,5 +27,10 @@ func (wrapper *Wrapper) Response(httpCode, errCode int, data interface{}) {
 		Message: consts.GetMsg(errCode),
 		Data:    data,
 	})
+	return
+}
+
+func (wrapper *Wrapper) View(name string, data interface{}) {
+	wrapper.HTML(200, fmt.Sprintf("%s.html", name), data)
 	return
 }

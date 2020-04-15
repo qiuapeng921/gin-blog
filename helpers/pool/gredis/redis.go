@@ -11,7 +11,7 @@ import (
 
 var RedisConn *redis.Pool
 
-func SetupRedis() error {
+func SetupRedis()  {
 	Idle, _ := strconv.Atoi(os.Getenv("MAX_IDLE"))
 	Active, _ := strconv.Atoi(os.Getenv("MAX_ACTIVE"))
 	RedisConn = &redis.Pool{
@@ -31,7 +31,7 @@ func SetupRedis() error {
 		},
 	}
 
-	return nil
+	return
 }
 
 func Set(key string, data interface{}, time int) error {
