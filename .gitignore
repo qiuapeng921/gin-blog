@@ -6,3 +6,4 @@ main
 gin-blog.exe
 .env
 runtime/*
+vendor
