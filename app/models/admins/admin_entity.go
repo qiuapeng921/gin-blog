@@ -1,6 +1,6 @@
-package models
+package admins
 
-type AdminModel struct {
+type AdminEntity struct {
 	Id         uint   `orm:"id,primary"  json:"id"`          // 用户id
 	Username   string `orm:"username"    json:"username"`    // 用户名
 	Password   string `orm:"password"    json:"password"`    // 密码
@@ -12,6 +12,6 @@ type AdminModel struct {
 	UpdateTime uint   `orm:"update_time" json:"update_time"` // 修改时间
 }
 
-func (AdminModel) TableName() string {
+func (AdminEntity) TableName() string {
 	return "admins"
 }

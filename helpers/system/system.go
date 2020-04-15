@@ -16,7 +16,7 @@ func SetUp() {
 	}
 	logging.Setup()
 	grom.SetUpGOrm()
-	grom.GetXOrmConn()
+	grom.SetUpXOrm()
 	gredis.SetupRedis()
 	crontab.InitCronTab()
 }
