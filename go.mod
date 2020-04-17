@@ -16,10 +16,12 @@ require (
 	github.com/lib/pq v1.3.0 // indirect
 	github.com/lunny/got v0.0.0-20140525120503-f70a11a7f423 // indirect
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible // indirect
+	github.com/microcosm-cc/bluemonday v1.0.2
 	github.com/robfig/cron v1.2.0
 	github.com/spf13/cobra v1.0.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	golang.org/x/crypto v0.0.0-20200414173820-0848c9571904 // indirect
+	gopkg.in/russross/blackfriday.v1 v1.5.1
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 	xorm.io/builder v0.3.7 // indirect
 	xorm.io/core v0.7.3 // indirect
