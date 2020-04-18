@@ -14,6 +14,9 @@ func SetupRouter(router *gin.Engine) {
 	router.GET("/", controller.Index)
 	router.GET("/ws", socket.WsHandler)
 
+	router.GET("/articles", controller.Articles)
+	router.GET("/articleInfo", controller.ArticleInfo)
+
 	router.GET("markdown", func(context *gin.Context) {
 		response.Context(context).View("markdown")
 	})

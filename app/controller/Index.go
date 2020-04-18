@@ -10,3 +10,11 @@ func Index(c *gin.Context) {
 		"name": "GinFrame",
 	})
 }
+
+func Articles(c *gin.Context) {
+	response.Context(c).View("list")
+}
+
+func ArticleInfo(c *gin.Context) {
+	response.Context(c).View("info")
+}

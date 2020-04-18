@@ -1,212 +1,66 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="gbk">
-<title>Ä¿Â¼2</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="static/css/index.css" rel="stylesheet">
-<script src="static/js/jquery.min.js" ></script>
-<script src="static/js/hc-sticky.js"></script>
-<script src="static/js/nav.js"></script>
-<script src="static/js/scrollreveal.js"></script>
-<!--[if lt IE 9]>
-<script src="static/js/modernizr.js"></script>
-<![endif]-->
-</head>
-<body>
-<header class="header-navigation">
-  <nav>
-    <div class="logo"><a href="/">ÑîÇà¸öÈË²©¿Í</a></div>
-    <h2 id="mnavh"><span class="navicon"></span></h2>
-<ul id="starlist">
-     <li><a href="/" title="Ê×Ò³">ÍøÕ¾Ê×Ò³</a></li> 
-    <li class="menu"><a href="/study/"  target="_blank">Ñ§ÎÞÖ¹¾³</a>
-  <ul class="sub">
-   
-      <li><a href="/study/1/" target="_blank">Ä¿Â¼1</a></li><li><a href="/study/2/" target="_blank">Ä¿Â¼2</a></li><li><a href="/study/3/" target="_blank">Ä¿Â¼3</a></li>    </ul><span></span></li>
-    <li><a href="/life/" target="_blank">ÂýÉú»î</a></li>  <li><a href="/show/" target="_blank">Í¼Æ¬Õ¹Ê¾</a></li>  <li><a href="/about/" target="_blank">¹ØÓÚÎÒ</a></li>  <li><a href="/time/" target="_blank">Ê±¼äÖá</a></li>  <li><a href="/e/tool/gbook/?bid=1" target="_blank">ÁôÑÔ</a></li>    </ul>
-    <div class="searchbox">
-    <div id="search_bar" class="search_bar">
-      <form id="searchform" action="/e/search/index.php" method="post" name="searchform">
-        <input class="input" placeholder="ÏëËÑµãÊ²Ã´ÄØ.." type="text" name="keyboard" id="keyboard">
-        <input type="hidden" name="show" value="title">
-        <input type="hidden" name="tempid" value="1">
-        <input type="hidden" name="tbname" value="news">
-        <input type="hidden" name="Submit" value="ËÑË÷">
-        <p class="search_ico"> <span></span></p>
-      </form>
-     </div> 
-    </div>
-  </nav>
-</header>
-<div class="pagebg">
-<img src="static/picture/page_bg.jpg" alt="Ä¿Â¼2" >
-</div>
-<div class="container">
-  <h1 class="t_nav"><span></span><a href="/" class="n1">ÍøÕ¾Ê×Ò³</a><a href="/study/2/" class="n2">Ä¿Â¼2</a></h1>
-  <!--blogsbox begin-->
-<main>
-  <div class="blogsbox">
-  
- 
- <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-      <h3 class="blogtitle"><a href="/study/2/18.html" target="_blank" >×îºóµÄÎç²Í</a></h3>
-      <span class="blogpic"><a href="/study/2/18.html" title="×îºóµÄÎç²Í"><img src="static/picture/82ad18fca433c2a102319063a17cfc8f.jpg" alt="×îºóµÄÎç²Í"></a></span>
+{{define "title"}}
+    åˆ—è¡¨
+{{end}}
 
-      <p class="blogtext">×òÍíÉÏ×öÃÎÁË£¬ÎÒ±¾²»Ïë¼ÇÏÂ£¬¿ÉÊÇÓÖÅÂÕâÖÖËÆºõÓÐµãÕæÊµµÄ¸Ð¾õ¾ÍÕâÑùÁï×ß£¬ÕíÍ·ÊªÁË...ÎÒÒ²¼Ç²»µÃÎÒÊÇÔÚÃÎÖÐ¿Þ¹ý»¹ÊÇ...... &amp;shy;ÔÚÒ»¸öÐ¡²Í¹Ý£¬ÄÐº¢½ÐÁËÒ»·ÝÓãÏãÇÑ×Ó¡¢ÂéÆÅ... </p>
-      <div class="bloginfo">
-        <ul>
-          <li class="author"></li>
-          <li class="lmname"><a href="/study/2/"  target="_blank" >Ä¿Â¼2</a></li>
-          <li class="timer">2018-07-15</li>
-          <li class="view"><span>1428</span>ÒÑÔÄ¶Á</li>
-          <li class="like">98</li>
-        </ul>
-      </div>
-    </div>
-    
-    
+{{define "style"}}
+    <link href="/static/css/index.css" rel="stylesheet">
+{{end}}
 
- 
- <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-      <h3 class="blogtitle"><a href="/study/2/17.html" target="_blank" >Just One Last Dance</a></h3>
-      <span class="blogpic"><a href="/study/2/17.html" title="Just One Last Dance"><img src="static/picture/89b36652d1f5ba23172c7ed3dc522d8b.jpg" alt="Just One Last Dance"></a></span>
+{{define "content"}}
+    <article>
+        <main style="width: 100%">
+            <div class="blogsbox">
+                <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+                    <h3 class="blogtitle">
+                        <a href="/articleInfo" target="_blank">ä½œä¸ºä¸€ä¸ªè®¾è®¡å¸ˆ,å¦‚æžœé­åˆ°è´¨ç–‘ä½ æ˜¯å¦èƒ½æªå®ˆè‡ªå·±çš„åŽŸåˆ™</a>
+                    </h3>
+                    <span class="blogpic">
+                        <a href="/articleInfo" title="ä½œä¸ºä¸€ä¸ªè®¾è®¡å¸ˆ,å¦‚æžœé­åˆ°è´¨ç–‘ä½ æ˜¯å¦èƒ½æªå®ˆè‡ªå·±çš„åŽŸåˆ™">
+                            <img src="/static/picture/75842f4d1e18d692a66c38eb172a40ab.jpg"
+                                 alt="ä½œä¸ºä¸€ä¸ªè®¾è®¡å¸ˆ,å¦‚æžœé­åˆ°è´¨ç–‘ä½ æ˜¯å¦èƒ½æªå®ˆè‡ªå·±çš„åŽŸåˆ™">
+                        </a>
+                    </span>
 
-      <p class="blogtext">¡¶Just One Last Dance ¡·ÊÇÒ»¸öÅóÓÑ½éÉÜ¸øÎÒÌýµÄ£¬µ±Ê±Ò»Ìý¾ÍÏ²»¶ÉÏËüÁË£¬Ö±µ½ÏÖÔÚ£¬¾ÍÏñ¡¶ÒòÎªÊÇÅ®×Ó¡·Ò»Ñù£¬ÎÒ¿Õ¼äµÄÖ÷´ò¸è»¹Í¦¶àµÄ£¬Î¨¶ÀÕâÁ½Ê×ÈÃÎÒÉá²»µÃ»»µô......Èç... </p>
-      <div class="bloginfo">
-        <ul>
-          <li class="author"></li>
-          <li class="lmname"><a href="/study/2/"  target="_blank" >Ä¿Â¼2</a></li>
-          <li class="timer">2018-07-15</li>
-          <li class="view"><span>935</span>ÒÑÔÄ¶Á</li>
-          <li class="like">44</li>
-        </ul>
-      </div>
-    </div>
-    
-    
+                    <p class="blogtext">
+                        æ›¾ç»æœ‰ç«™é•¿æ‰¾æˆ‘æ±‚åŠ©ï¼Œä»–è¯´ä»–ä¸çŸ¥é“è¯¥æ€Žä¹ˆåŠž</p>
+                    <div class="bloginfo">
+                        <ul>
+                            <li class="author"></li>
+                            <li class="lmname"><a href="/show/" target="_blank">å›¾ç‰‡å±•ç¤º</a></li>
+                            <li class="timer">2018-07-16</li>
+                            <li class="view"><span>4135</span>å·²é˜…è¯»</li>
+                            <li class="like">300</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="blogsbox">
+                <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+                    <h3 class="blogtitle">
+                        <a href="/articleInfo" target="_blank">ä½œä¸ºä¸€ä¸ªè®¾è®¡å¸ˆ,å¦‚æžœé­åˆ°è´¨ç–‘ä½ æ˜¯å¦èƒ½æªå®ˆè‡ªå·±çš„åŽŸåˆ™</a>
+                    </h3>
+                    <span class="blogpic">
+                        <a href="/articleInfo" title="ä½œä¸ºä¸€ä¸ªè®¾è®¡å¸ˆ,å¦‚æžœé­åˆ°è´¨ç–‘ä½ æ˜¯å¦èƒ½æªå®ˆè‡ªå·±çš„åŽŸåˆ™">
+                            <img src="/static/picture/75842f4d1e18d692a66c38eb172a40ab.jpg"
+                                 alt="ä½œä¸ºä¸€ä¸ªè®¾è®¡å¸ˆ,å¦‚æžœé­åˆ°è´¨ç–‘ä½ æ˜¯å¦èƒ½æªå®ˆè‡ªå·±çš„åŽŸåˆ™">
+                        </a>
+                    </span>
 
- 
- <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-      <h3 class="blogtitle"><a href="/study/2/16.html" target="_blank" >³­Ï®ÃÅ¹ýºó¡ª¡ª¶ªµôÐÄ½á£¬ÖØÊ°×Ô¼º</a></h3>
-      
-      <p class="blogtext">Ëµµ½³­Ï®£¬³õÖÐ¾Í·¢ÉúÁËÄÇÃ´Ò»¼þÞÏÞÎµÄÊÂ¡£ÎÒµÄ×÷ÎÄÔÚ°àÉÏÀÏÊ¦ºÍÍ¬Ñ§Ò»Ö±¶¼ÈÏÎª»¹²»´í£¬¾­³£±»ÄÃµ½°àÉÏÉõÖÁÆäËû°àµ±·¶ÎÄ¡£ÒÔ¡¶ Î¢Ð¦¡·Îª±êÌâ×÷ÎÄ£¬Á½ÌìÊ±¼äÎÒ¾ÍÊÇÏë²»³öÎ¢Ð¦... </p>
-      <div class="bloginfo">
-        <ul>
-          <li class="author"></li>
-          <li class="lmname"><a href="/study/2/"  target="_blank" >Ä¿Â¼2</a></li>
-          <li class="timer">2018-07-15</li>
-          <li class="view"><span>636</span>ÒÑÔÄ¶Á</li>
-          <li class="like">42</li>
-        </ul>
-      </div>
-    </div>
-    
-    
+                    <p class="blogtext">
+                        æ›¾ç»æœ‰ç«™é•¿æ‰¾æˆ‘æ±‚åŠ©ï¼Œä»–è¯´ä»–ä¸çŸ¥é“è¯¥æ€Žä¹ˆåŠž</p>
+                    <div class="bloginfo">
+                        <ul>
+                            <li class="author"></li>
+                            <li class="lmname"><a href="/show/" target="_blank">å›¾ç‰‡å±•ç¤º</a></li>
+                            <li class="timer">2018-07-16</li>
+                            <li class="view"><span>4135</span>å·²é˜…è¯»</li>
+                            <li class="like">300</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </article>
+{{end}}
 
- 
- <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-      <h3 class="blogtitle"><a href="/study/2/15.html" target="_blank" >ÔÙ¿´4ÄêÇ°Ä³»éÁµÍøÕ¾ÎÒµÄÊ®ÌõÕ÷»éÌõ¼þ</a></h3>
-      <span class="blogpic"><a href="/study/2/15.html" title="ÔÙ¿´4ÄêÇ°Ä³»éÁµÍøÕ¾ÎÒµÄÊ®ÌõÕ÷»éÌõ¼þ"><img src="static/picture/6abfdd1f080561acedbd2606210951eb.png" alt="ÔÙ¿´4ÄêÇ°Ä³»éÁµÍøÕ¾ÎÒµÄÊ®ÌõÕ÷»éÌõ¼þ"></a></span>
-
-      <p class="blogtext">ÒâÍâµÄÊÇÕâ¸öµ±µØµÄ»éÁµÍøÕ¾µ½Ä¿Ç°»¹´æÔÚ£¬¸üÒâÍâµÄÊÇ£¬ÎÒµÄ¸öÈËÕÊºÅ»¹±£´æÔÚËûÃÇÍøÕ¾ÉÏ¡£ºÃÆæÐÄÆÈÊ¹ÎÒ´ò¿ª¸öÈË×ÊÁÏ¿´¿´µ½µ×µ±ÄêÐ´ÁËÊ²Ã´ÑùµÄÕ÷»éÌõ¼þ¡£Ô­À´ÕâÐ©ÄêÕâÐ©±ê×¼... </p>
-      <div class="bloginfo">
-        <ul>
-          <li class="author"></li>
-          <li class="lmname"><a href="/study/2/"  target="_blank" >Ä¿Â¼2</a></li>
-          <li class="timer">2018-07-15</li>
-          <li class="view"><span>713</span>ÒÑÔÄ¶Á</li>
-          <li class="like">31</li>
-        </ul>
-      </div>
-    </div>
-    
-    
-
- 
- <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-      <h3 class="blogtitle"><a href="/study/2/14.html" target="_blank" >×ö³ÌÐòÔ±µÄÕâÐ©Äê£¬ÂýÂý²ÅÌå»áµ½½¡¿µ²ÅÊÇÉÝ³ÞÆ·</a></h3>
-      
-      <p class="blogtext">ÎªÊ²Ã´»áÓÐÕâÑùµÄ¸Ð¿®£¬ÒòÎªÕâÐ©ÄêÎÒÖÜÎ§µÄÍ¬ÊÂÅóÓÑµÄÉíÌåÎÊÌâ¶¼Ïà¼Ì±¨¾¯£¬°üÀ¨ÎÒÒ²ÕâÑù£¬ÎªÁËµ÷ÊÔ´úÂë£¬½â¾öbug£¬Âú×ãÒ»ÇÐ¿Í»§µÄÒªÇó£¬È±·¦ÔË¶¯£¬´ÓÊÂÕâ¸öÐÐÒµÕâÃ´¶àÄê£¬¾Ã... </p>
-      <div class="bloginfo">
-        <ul>
-          <li class="author"></li>
-          <li class="lmname"><a href="/study/2/"  target="_blank" >Ä¿Â¼2</a></li>
-          <li class="timer">2018-07-15</li>
-          <li class="view"><span>500</span>ÒÑÔÄ¶Á</li>
-          <li class="like">35</li>
-        </ul>
-      </div>
-    </div>
-    
-    
- 
-<div class="pagelist"></div>
-  </div>
-</main>
-  <!--blogsbox end-->
-  <aside class="sidebar">
-    <div class="zhuanti">
-      <h2 class="hometitle">ÌØ±ðÍÆ¼ö</h2>
-      <ul>
-        <li> <i><img src="static/picture/89b36652d1f5ba23172c7ed3dc522d8b.jpg"></i>
-          <p>Just One Last Dance<span><a href="/study/2/17.html" title="Just One Last Dance" target="_blank">ÔÄ¶Á</a></span> </p>
-        </li>
-        <li> <i><img src="static/picture/49962501843114c70121ad142e60a056.jpg"></i>
-          <p>×÷ÎªÒ»¸öÉè¼ÆÊ¦,Èç¹ûÔâµ½ÖÊÒÉÄãÊÇ·ñÄÜã¡ÊØ×Ô¼ºµÄÔ­Ôò?<span><a href="/life/8.html" title="×÷ÎªÒ»¸öÉè¼ÆÊ¦,Èç¹ûÔâµ½ÖÊÒÉÄãÊÇ·ñÄÜã¡ÊØ×Ô¼ºµÄÔ­Ôò?" target="_blank">ÔÄ¶Á</a></span> </p>
-        </li>
-        <li> <i><img src="static/picture/917d732926d79cc2ae1012831ce51d1e.jpg"></i>
-          <p>°²¾²µØ×öÒ»¸ö°®Éè¼ÆµÄÅ®×Ó<span><a href="/life/3.html" title="°²¾²µØ×öÒ»¸ö°®Éè¼ÆµÄÅ®×Ó" target="_blank">ÔÄ¶Á</a></span> </p>
-        </li>
-      </ul>
-    </div>
-    <div class="tuijian">
-      <h2 class="hometitle">ÍÆ¼öÎÄÕÂ</h2>
-       <ul class="tjpic">
-        <i><img src="static/picture/89b36652d1f5ba23172c7ed3dc522d8b.jpg"></i>
-        <p><a href="/study/2/17.html" title="Just One Last Dance" target="_blank">Just One Last Dance</a></p>
-      </ul>
-    </div>
-    <div class="tuijian">
-      <h2 class="hometitle">µã»÷ÅÅÐÐ</h2>
-      <ul class="tjpic">
-        <i><img src="static/picture/82ad18fca433c2a102319063a17cfc8f.jpg"></i>
-        <p><a href="/study/2/18.html" title="×îºóµÄÎç²Í" target="_blank">×îºóµÄÎç²Í</a></p>
-      </ul>
-      <ul class="sidenews">
-        <li> <i><img src="static/picture/89b36652d1f5ba23172c7ed3dc522d8b.jpg"></i>
-          <p><a href="/study/2/17.html" title="Just One Last Dance" target="_blank">Just One Last Dance</a></p>
-          <span>[2018-07-15]</span> </li>
-      </ul>
-      <ul class="sidenews">
-        <li> <i><img src="static/picture/6abfdd1f080561acedbd2606210951eb.png"></i>
-          <p><a href="/study/2/15.html" title="ÔÙ¿´4ÄêÇ°Ä³»éÁµÍøÕ¾ÎÒµÄÊ®ÌõÕ÷»éÌõ¼þ" target="_blank">ÔÙ¿´4ÄêÇ°Ä³»éÁµÍøÕ¾ÎÒµÄÊ®ÌõÕ÷»éÌõ¼þ</a></p>
-          <span>[2018-07-15]</span> </li>
-      </ul>
-    </div>
-    <div class="cloud">
-      <h2 class="hometitle">±êÇ©ÔÆ</h2>
-      <ul>
-        <a href="/e/tags/?tagname=%C9%E8%BC%C6&tempid=9" target="_blank">Éè¼Æ</a> <a href="/e/tags/?tagname=%B8%F6%C8%CB%B2%A9%BF%CD&tempid=9" target="_blank">¸öÈË²©¿Í</a>    </ul>
-    </div>
-    <div class="guanzhu">
-      <h2 class="hometitle">¹Ø×¢ÎÒÃÇ Ã´Ã´ßÕ£¡</h2>
-      <ul>
-        <li class="sina"><a href="/" target="_blank"><span>ÐÂÀËÎ¢²©</span>ÑîÇà²©¿Í</a></li>
-        <li class="tencent"><a href="/" target="_blank"><span>ÌÚÑ¶Î¢²©</span>ÑîÇà²©¿Í</a></li>
-        <li class="qq"><a href="/" target="_blank"><span>QQºÅ</span>476847113</a></li>
-        <li class="email"><a href="/" target="_blank"><span>ÓÊÏäÕÊºÅ</span>dancesmiling@qq.com</a></li>
-        <li class="wxgzh"><a href="/" target="_blank"><span>Î¢ÐÅºÅ</span>yangqq_1987</a></li>
-        <li class="wx"><img src="static/picture/wx.jpg"></li>
-      </ul>
-    </div>
-  </aside>
-</div>
-<footer>
-  <p>Design by <a href="http://www.yangqq.com" target="_blank">ÑîÇà¸öÈË²©¿Í</a> <a href="/">ÊñICP±¸11002373ºÅ-1</a></p>
-</footer>
-<a href="#" class="cd-top">Top</a>
-</body>
-</html>
+{{define "script"}}{{end}}
