@@ -4,7 +4,6 @@ import (
 	"gin-blog/app/controller"
 	"gin-blog/app/middleware"
 	"gin-blog/app/socket"
-	"gin-blog/helpers/response"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,8 +14,6 @@ func SetupRouter(router *gin.Engine) {
 	router.GET("/ws", socket.WsHandler)
 
 	router.NoRoute(func(context *gin.Context) {
-		response.Context(context).View("welcome", gin.H{
-			"name": "GinFrame",
-		})
+		context.Redirect(301,"/")
 	})
 }

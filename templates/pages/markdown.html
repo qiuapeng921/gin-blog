@@ -1,0 +1,33 @@
+{{define "title"}}
+    markdown编辑器
+{{end}}
+
+{{define "style"}}
+    <link href="/static/editormd/css/editormd.css" rel="stylesheet"/>
+{{end}}
+
+{{define "content"}}
+    <div id="test-editor" style="margin-top: 100px;">
+        <label>
+            <textarea style="display:none;">
+                ### 关于 Editor.md
+                **Editor.md** 是一款开源的、可嵌入的 Markdown 在线编辑器（组件），基于 CodeMirror、jQuery 和 Marked 构建。
+            </textarea>
+        </label>
+    </div>
+{{end}}
+
+{{define "script"}}
+    <script src="/static/editormd/examples/js/jquery.min.js"></script>
+    <script src="/static/js/editormd.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        let editor = editormd("test-editor", {
+          width: "90%",
+          height: 640,
+          syncScrolling: "single",
+          path: "../../public/assets/editormd/lib"
+        });
+      });
+    </script>
+{{end}}
