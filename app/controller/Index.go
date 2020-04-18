@@ -6,7 +6,7 @@ import (
 )
 
 func Index(c *gin.Context) {
-	response.Context(c).View("markdown", gin.H{
+	response.Context(c).View("index", gin.H{
 		"name": "GinFrame",
 	})
 }
