@@ -1,6 +1,9 @@
 package controller
 
 import (
+	"fmt"
+	"gin-blog/app/models/articles"
+	"gin-blog/helpers/pool/grom"
 	"gin-blog/helpers/response"
 	"github.com/gin-gonic/gin"
 )
@@ -17,4 +20,12 @@ func Articles(c *gin.Context) {
 
 func ArticleInfo(c *gin.Context) {
 	response.Context(c).View("info")
+}
+
+func SaveArticle(c *gin.Context) {
+	params := c.PostForm("editor-markdown-doc")
+	var entity articles.Entity
+	entity.Content = params
+	grom.GetConn().Model("articles").Save(&entity)
+	fmt.Println(params)
 }

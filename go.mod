@@ -13,5 +13,6 @@ require (
 	github.com/joho/godotenv v1.3.0
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/robfig/cron v1.2.0
+	go.mongodb.org/mongo-driver v1.3.2
 	gopkg.in/russross/blackfriday.v1 v1.5.1
 )

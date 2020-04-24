@@ -11,6 +11,7 @@ git clone https://github.com/qiuapeng921/gin-blog $GOPATH/src/gin-blog
 
 - Mysql
 - Redis
+- Mongo
 
 
 ### 运行
@@ -38,9 +39,9 @@ go run main.go
 ## 特性
 - Gin
 - Gorm
-- Swagger
-- logging
-- Cron
+- Xorm
+- Mongo
 - Redis
+- Cron
 - Socket
 - Templates

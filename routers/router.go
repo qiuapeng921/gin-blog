@@ -16,6 +16,7 @@ func SetupRouter(router *gin.Engine) {
 
 	router.GET("/articles", controller.Articles)
 	router.GET("/articleInfo", controller.ArticleInfo)
+	router.POST("/saveArticle", controller.SaveArticle)
 
 	router.GET("markdown", func(context *gin.Context) {
 		response.Context(context).View("markdown")

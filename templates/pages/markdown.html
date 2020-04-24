@@ -8,12 +8,16 @@
 {{end}}
 
 {{define "content"}}
-    <div id="editor" style="margin-top: 100px;">
-        <label>
-            <textarea style="display:none;">
+    <form action="/saveArticle" method="post">
+        <div id="editor" style="margin-top: 100px;">
+            <label>
+            <textarea name="content">
             </textarea>
-        </label>
-    </div>
+            </label>
+            <button type="submit">提交</button>
+        </div>
+        <button type="submit">提交</button>
+    </form>
 {{end}}
 
 {{define "script"}}
