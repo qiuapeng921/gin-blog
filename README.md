@@ -33,15 +33,22 @@ REDIS_PASSWORD=null
 REDIS_MAX_IDLE=50
 REDIS_MAX_ACTIVE=1200
 
+MONGO_HOST=127.0.0.1:27017
+MONGO_USERNAME=null
+MONGO_PASSWORD=null
+MONGO_MAX_POOL=20
+
+ELASTIC_HOST=http://127.0.0.1:9200
+
 go run main.go 
 ```
 
 ## 特性
 - Gin
 - Gorm
-- Xorm
 - Mongo
 - Redis
+- ElasticSearch
 - Cron
 - Socket
 - Templates

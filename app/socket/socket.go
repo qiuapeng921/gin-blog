@@ -63,6 +63,7 @@ func onMessage(conn *websocket.Conn, msgType int, data string) (err error) {
 }
 
 func onClone(conn *websocket.Conn) {
+	conn.CloseHandler()
 	log.Println("用户下线")
 }
 

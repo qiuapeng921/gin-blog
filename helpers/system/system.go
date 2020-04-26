@@ -16,9 +16,9 @@ func SetUp() {
 		log.Fatal(err.Error())
 	}
 	logging.Setup()
-	grom.SetUpGOrm()
-	grom.SetUpXOrm()
-	gredis.SetupRedis()
 	crontab.InitCronTab()
-	mongo.Setup()
+	grom.SetUpOrm()
+	mongo.SetupMongo()
+	gredis.SetupRedis()
+	//elastic.SetupElastic()
 }
