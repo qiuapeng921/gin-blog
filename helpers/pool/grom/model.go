@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-var conn *gorm.DB
+var client *gorm.DB
 
 func SetUpOrm() {
 	database := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=%s&parseTime=True&loc=Local",
@@ -17,20 +17,20 @@ func SetUpOrm() {
 		os.Getenv("DB_HOST"),
 		os.Getenv("DB_DATABASE"),
 		os.Getenv("DB_CHARSET"))
-	db, err := gorm.Open("mysql", database)
+	var err error
+	client, err = gorm.Open("mysql", database)
 	if err != nil {
 		panic(err.Error())
 	}
-	db.SingularTable(true)
+	client.SingularTable(true)
 	maxIdle, _ := strconv.Atoi(os.Getenv("DB_MAX_IDLE"))
 	maxOpen, _ := strconv.Atoi(os.Getenv("DB_MAX_OPEN"))
-	db.DB().SetMaxIdleConns(maxIdle)
-	db.DB().SetMaxOpenConns(maxOpen)
-	db.LogMode(true)
-	conn = db
+	client.DB().SetMaxIdleConns(maxIdle)
+	client.DB().SetMaxOpenConns(maxOpen)
+	client.LogMode(true)
 	fmt.Println("mysql连接成功")
 }
 
 func GetConn() *gorm.DB {
-	return conn
+	return client
 }

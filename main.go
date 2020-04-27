@@ -26,14 +26,13 @@ func main() {
 	routers.SetupRouter(engine)
 
 	endPoint := fmt.Sprintf("%s:%s", os.Getenv("HTTP_ADDRESS"), os.Getenv("HTTP_PORT"))
-	maxHeaderBytes := 1 << 20
 
 	server := &http.Server{
 		Addr:           endPoint,
 		Handler:        engine,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
-		MaxHeaderBytes: maxHeaderBytes,
+		MaxHeaderBytes: 1 << 20,
 	}
 
 	log.Println("Go Http Server Start Successful")

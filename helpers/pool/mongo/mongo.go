@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-var conn *mongo.Client
+var client *mongo.Client
 
 //初始化
 func SetupMongo() {
@@ -18,7 +18,8 @@ func SetupMongo() {
 	defer cancel()
 	maxPool, _ := strconv.Atoi(os.Getenv("MONGO_MAX_POOL"))
 	uri := fmt.Sprintf("mongodb://%s", os.Getenv("MONGO_HOST"))
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri).SetMaxPoolSize(uint64(maxPool)))
+	var err error
+	client, err = mongo.Connect(ctx, options.Client().ApplyURI(uri).SetMaxPoolSize(uint64(maxPool)))
 
 	if err != nil {
 		panic(err.Error())
@@ -27,11 +28,9 @@ func SetupMongo() {
 	if err != nil {
 		panic(err.Error())
 	}
-	conn = client
 	fmt.Println("mongodb连接成功")
 }
 
 func GetMongoDb() *mongo.Client {
-
-	return conn
+	return client
 }

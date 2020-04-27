@@ -5,6 +5,7 @@ import (
 	"gin-blog/helpers/logging"
 	"gin-blog/helpers/pool/gredis"
 	"gin-blog/helpers/pool/grom"
+	"gin-blog/helpers/pool/mongo"
 	"github.com/joho/godotenv"
 	"log"
 )
@@ -18,6 +19,6 @@ func SetUp() {
 	crontab.InitCronTab()
 	grom.SetUpOrm()
 	gredis.SetupRedis()
-	//mongo.SetupMongo()
+	mongo.SetupMongo()
 	//elastic.SetupElastic()
 }
