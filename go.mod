@@ -12,8 +12,10 @@ require (
 	github.com/jinzhu/gorm v1.9.12
 	github.com/joho/godotenv v1.3.0
 	github.com/mailru/easyjson v0.7.1 // indirect
+	github.com/microcosm-cc/bluemonday v1.0.2
 	github.com/olivere/elastic v6.2.30+incompatible
 	github.com/robfig/cron v1.2.0
+	github.com/russross/blackfriday v1.5.2
 	go.mongodb.org/mongo-driver v1.3.2
-	gopkg.in/russross/blackfriday.v1 v1.5.1
+	gopkg.in/russross/blackfriday.v1 v1.5.1 // indirect
 )

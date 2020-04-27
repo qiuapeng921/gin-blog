@@ -27,7 +27,7 @@ func SetupRedis() *redis.Client {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("redis初始化成功", pong)
+	fmt.Println("redis连接成功", pong)
 	return client
 }
 

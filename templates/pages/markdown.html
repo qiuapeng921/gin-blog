@@ -8,15 +8,20 @@
 {{end}}
 
 {{define "content"}}
-    <form action="/saveArticle" method="post">
-        <div id="editor" style="margin-top: 100px;">
-            <label>
-            <textarea name="content">
-            </textarea>
-            </label>
-        </div>
-        <button type="submit" class="btn btn-success" style="margin-left: 50%;margin-bottom:20px;width: 100px;">提交</button>
-    </form>
+    <article>
+        <form action="/saveArticle" method="post">
+            <div class="form-group">
+                <label for="title">标题</label>
+                <input type="text" class="form-control" name="title" placeholder="请输入标题">
+            </div>
+            <label for="content">内容</label>
+            <div class="form-group" id="editor">
+                <textarea placeholder="请输入内容" name="content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success" style="margin-left: 50%;margin-bottom:20px;width: 100px;">提交
+            </button>
+        </form>
+    </article>
 {{end}}
 
 {{define "script"}}
@@ -24,8 +29,9 @@
     <script type="text/javascript">
       $(function () {
         let editor = editormd("editor", {
-          width: "80%",
-          height: 680,
+          name: "content",
+          width: "100%",
+          height: 500,
           syncScrolling: "single",
           path: "/static/editormd/lib/"
         });

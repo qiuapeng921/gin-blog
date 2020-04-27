@@ -2,6 +2,7 @@ package templates
 
 import (
 	"fmt"
+	"gin-blog/helpers/system"
 	"github.com/gin-contrib/multitemplate"
 	"github.com/gin-gonic/gin"
 	"html/template"
@@ -16,7 +17,7 @@ func InitTemplate(router *gin.Engine) {
 	router.HTMLRender = loadTemplates("./templates")
 	// 自定义方法
 	router.SetFuncMap(template.FuncMap{
-		"formatAsDate": formatDate,
+		"formatAsDate":   formatDate,
 	})
 }
 
@@ -47,4 +48,8 @@ func loadTemplates(templatesDir string) multitemplate.Renderer {
 func formatDate(t time.Time) string {
 	year, month, day := t.Date()
 	return fmt.Sprintf("%d/%02d/%02d", year, month, day)
+}
+
+func markdownToHtml(markdown string) string {
+	return system.MarkDownToHTML(markdown)
 }

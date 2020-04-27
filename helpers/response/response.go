@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gin-blog/app/consts"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 type Wrapper struct {
@@ -31,6 +32,20 @@ func (wrapper *Wrapper) Response(httpCode, errCode int, data interface{}) {
 }
 
 func (wrapper *Wrapper) View(name string, data ...interface{}) {
-	wrapper.HTML(200, fmt.Sprintf("%s.html", name), data)
+	responseData := interface{}(nil)
+	if len(data) > 0 {
+		responseData = data[0]
+	}
+	wrapper.HTML(200, fmt.Sprintf("%s.html", name), responseData)
+	return
+}
+
+func (wrapper *Wrapper) Success(data ...interface{}) {
+	wrapper.Response(http.StatusOK, http.StatusOK, data)
+	return
+}
+
+func (wrapper *Wrapper) Error(errCode ...int) {
+	wrapper.Response(http.StatusOK, http.StatusOK, errCode)
 	return
 }

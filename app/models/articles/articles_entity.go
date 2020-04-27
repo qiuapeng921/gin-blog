@@ -13,3 +13,7 @@ type Entity struct {
 	CreateTime   int    `orm:"create_time"   json:"create_time"`   // 创建时间
 	UpdateTime   int    `orm:"update_time"   json:"update_time"`   // 修改时间
 }
+
+func (Entity) TableName() string {
+	return "articles"
+}
