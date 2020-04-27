@@ -24,9 +24,9 @@ func ArticleInfo(c *gin.Context) {
 
 func SaveArticle(c *gin.Context) {
 	params := c.PostForm("editor-markdown-doc")
+	fmt.Println(params)
 	var entity articles.Entity
 	entity.Content = params
-	db := grom.GetInstance().GetConn()
-	db.Model("articles").Save(&entity)
-	fmt.Println(params)
+	db := grom.GetConn().Save(&entity)
+	fmt.Println(db.RowsAffected)
 }

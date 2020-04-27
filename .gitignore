@@ -1,7 +1,7 @@
 .idea/
 .DS_Store
 
-main.exe
+*.exe
 main
 gin-blog.exe
 .env

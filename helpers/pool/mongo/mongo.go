@@ -10,9 +10,7 @@ import (
 	"time"
 )
 
-type Mongo struct {
-	Mongo *mongo.Client
-}
+var conn *mongo.Client
 
 //初始化
 func SetupMongo() {
@@ -29,12 +27,11 @@ func SetupMongo() {
 	if err != nil {
 		panic(err.Error())
 	}
-	var mongo Mongo
-	mongo.Mongo = client
-	fmt.Println(mongo)
-
+	conn = client
+	fmt.Println("mongodb连接成功")
 }
 
-func (m *Mongo) GetMongoDb() *mongo.Client {
-	return m.Mongo
+func GetMongoDb() *mongo.Client {
+
+	return conn
 }
