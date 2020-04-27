@@ -5,29 +5,32 @@ import (
 	"github.com/go-redis/redis/v7"
 	"os"
 	"strconv"
+	"time"
 )
 
-var conn *redis.Client
+var client *redis.Client
 
-func SetupRedis() {
+func SetupRedis() *redis.Client {
 	Address := os.Getenv("REDIS_HOST")
-	PassWord := os.Getenv("REDIS_PASSWORD")
+	Password := os.Getenv("REDIS_PASSWORD")
 	Idle, _ := strconv.Atoi(os.Getenv("MAX_IDLE"))
 	Active, _ := strconv.Atoi(os.Getenv("MAX_ACTIVE"))
-	conn = redis.NewClient(&redis.Options{
-		Addr:         Address,
-		Password:     PassWord,
-		DB:           0,
-		PoolSize:     Idle,
-		MinIdleConns: Active,
+	client = redis.NewClient(&redis.Options{
+		Addr:        Address,
+		Password:    Password,         // Redis账号
+		DB:          0,                // Redis库
+		PoolSize:    Active,           // Redis连接池大小
+		MaxRetries:  Idle,             // 最大重试次数
+		IdleTimeout: 10 * time.Second, // 空闲链接超时时间
 	})
-	pong, err := conn.Ping().Result()
+	pong, err := client.Ping().Result()
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("redis连接成功", pong)
+	fmt.Println("redis初始化成功", pong)
+	return client
 }
 
 func GetConn() *redis.Client {
-	return conn
+	return client
 }
