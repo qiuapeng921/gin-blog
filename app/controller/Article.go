@@ -3,6 +3,7 @@ package controller
 import (
 	"gin-blog/app/consts"
 	"gin-blog/app/models/articles"
+	"gin-blog/app/models/categorys"
 	"gin-blog/app/request"
 	"gin-blog/app/service"
 	"gin-blog/helpers/pool/grom"
@@ -10,11 +11,17 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 func Articles(c *gin.Context) {
+	var indexRequest request.IndexRequest
+	if err := c.ShouldBindQuery(&indexRequest); err != nil {
+		response.Context(c).Error(consts.ERROR)
+		return
+	}
 	var article service.ArticleService
-	result := article.GetList()
+	result := article.GetList(indexRequest)
 	response.Context(c).View("list", gin.H{"article": result})
 }
 
@@ -28,16 +35,26 @@ func ArticleInfo(c *gin.Context) {
 	})
 }
 
+func Markdown(c *gin.Context) {
+	var category []categorys.Entity
+	grom.GetConn().Find(&category)
+	response.Context(c).View("markdown", gin.H{
+		"category": category,
+	})
+}
+
 func SaveArticle(c *gin.Context) {
 	var form request.ArticleRequest
-	err := c.ShouldBind(&form)
-	if err != nil {
+	if err := c.ShouldBind(&form); err != nil {
 		response.Context(c).Error(consts.ERROR)
 		return
 	}
 	var articleModel articles.Entity
 	articleModel.Title = form.Title
 	articleModel.Content = form.Content
+	articleModel.CategoryId = form.Category
+	articleModel.CreateTime = time.Now().Unix()
+	articleModel.UpdateTime = time.Now().Unix()
 	grom.GetConn().Save(&articleModel)
-	c.Redirect(http.StatusMovedPermanently, "/markdown")
+	c.Redirect(http.StatusMovedPermanently, "/")
 }

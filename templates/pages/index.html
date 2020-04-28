@@ -40,20 +40,19 @@
                             <a href="/articleInfo?id={{$v.Id}}" target="_blank">{{$v.Title}}</a>
                         </h3>
                         <span class="blogpic">
-                        <a href="/articleInfo" title="{{$v.Title}}">
+                        <a href="/articleInfo?id={{$v.Id}}" title="{{$v.Title}}">
                             <img src="/static/picture/75842f4d1e18d692a66c38eb172a40ab.jpg" alt="{{$v.Title}}">
                         </a>
                     </span>
 
-                        <p class="blogtext">
-                            {{$v.Content}}</p>
+                        <p class="blogtext">{{$v.Content | markdownToHtml}}</p>
                         <div class="bloginfo">
                             <ul>
                                 <li class="author"></li>
                                 <li class="lmname"><a href="/show/" target="_blank">图片展示</a></li>
-                                <li class="timer">2018-07-16</li>
-                                <li class="view"><span>4135</span>已阅读</li>
-                                <li class="like">300</li>
+                                <li class="timer">{{$v.CreateTime | formatDate}}</li>
+                                <li class="view"><span>{{$v.Views}}</span>已阅读</li>
+                                <li class="like">{{$v.LikeCount}}</li>
                             </ul>
                         </div>
                     </div>

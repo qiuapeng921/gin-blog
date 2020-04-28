@@ -10,8 +10,8 @@ type Entity struct {
 	LikeCount    int64  `orm:"like_count"    json:"like_count"`    // 喜欢数
 	CommentCount int64  `orm:"comment_count" json:"comment_count"` // 评论总数
 	Status       int    `orm:"status"        json:"status"`        // 0 正常 1 删除
-	CreateTime   int    `orm:"create_time"   json:"create_time"`   // 创建时间
-	UpdateTime   int    `orm:"update_time"   json:"update_time"`   // 修改时间
+	CreateTime   int64  `orm:"create_time"   json:"create_time"`   // 创建时间
+	UpdateTime   int64  `orm:"update_time"   json:"update_time"`   // 修改时间
 }
 
 func (Entity) TableName() string {

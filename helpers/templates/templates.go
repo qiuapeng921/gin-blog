@@ -1,7 +1,8 @@
 package templates
 
 import (
-	"fmt"
+	"gin-blog/app/models/categorys"
+	"gin-blog/helpers/pool/grom"
 	"gin-blog/helpers/system"
 	"github.com/gin-contrib/multitemplate"
 	"github.com/gin-gonic/gin"
@@ -13,19 +14,23 @@ import (
 func InitTemplate(router *gin.Engine) {
 	router.Static("/static", "./public/assets")
 	router.StaticFile("/favicon.ico", "./public/favicon.ico")
-	//router.LoadHTMLGlob("templates/*/**")
 	router.HTMLRender = loadTemplates("./templates")
-	// 自定义方法
-	router.SetFuncMap(template.FuncMap{
-		"formatAsDate":   formatDate,
-	})
+}
+
+//自定义函数
+func FuncMap() template.FuncMap {
+	return template.FuncMap{
+		"formatDate":     formatDate,
+		"markdownToHtml": markdownToHtml,
+		"getCategory":    getCategory,
+	}
 }
 
 //多模板（模板继承）
 func loadTemplates(templatesDir string) multitemplate.Renderer {
 	renderer := multitemplate.NewRenderer()
 
-	articleLayouts, err := filepath.Glob(templatesDir + "/layouts/*.html")
+	layouts, err := filepath.Glob(templatesDir + "/layouts/*.html")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -36,20 +41,25 @@ func loadTemplates(templatesDir string) multitemplate.Renderer {
 	}
 
 	for _, page := range pages {
-		layoutCopy := make([]string, len(articleLayouts))
-		copy(layoutCopy, articleLayouts)
+		layoutCopy := make([]string, len(layouts))
+		copy(layoutCopy, layouts)
 		files := append(layoutCopy, page)
-		renderer.AddFromFiles(filepath.Base(page), files...)
+		renderer.AddFromFilesFuncs(filepath.Base(page), FuncMap(), files...)
 	}
 	return renderer
 }
 
 // 时间戳转时间格式
-func formatDate(t time.Time) string {
-	year, month, day := t.Date()
-	return fmt.Sprintf("%d/%02d/%02d", year, month, day)
+func formatDate(timestamp int64) string {
+	layout := "2006-01-02 15:04:05"
+	return time.Unix(timestamp, 0).Format(layout)
 }
 
 func markdownToHtml(markdown string) string {
 	return system.MarkDownToHTML(markdown)
+}
+
+func getCategory() (category []categorys.Entity) {
+	grom.GetConn().Find(&category)
+	return category
 }
