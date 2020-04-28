@@ -11,8 +11,6 @@ git clone https://github.com/qiuapeng921/gin-blog $GOPATH/src/gin-blog
 
 - Mysql
 - Redis
-- Mongo
-
 
 ### 运行
 ```
@@ -49,6 +47,7 @@ go run main.go
 - Mongo
 - Redis
 - ElasticSearch
+- RabbitMq
 - Cron
 - Socket
 - Templates

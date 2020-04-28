@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-var	client *elastic.Client
+var client *elastic.Client
 
 func SetupElastic() {
 	var err error
@@ -25,4 +25,37 @@ func SetupElastic() {
 
 func GetConn() *elastic.Client {
 	return client
+}
+
+//创建
+func Create(Database, Type string, Data interface{}) (*elastic.IndexResponse, error) {
+	return client.Index().
+		Index(Database).
+		Type(Type).
+		BodyJson(Data).
+		Do(context.Background())
+}
+
+//删除
+func Delete(Database, Type string) (*elastic.DeleteResponse, error) {
+	return client.Delete().Index(Database).
+		Type(Type).
+		Id("1").
+		Do(context.Background())
+}
+
+//修改
+func Update(Database, Type string, Data interface{}) (*elastic.UpdateResponse, error) {
+	return client.Update().
+		Index(Database).
+		Type(Type).
+		Id("2").
+		Doc(Data).
+		Do(context.Background())
+}
+
+//查找
+func Query(Database, Type string) (*elastic.GetResult, error) {
+	//通过id查找
+	return client.Get().Index(Database).Type(Type).Id("2").Do(context.Background())
 }
