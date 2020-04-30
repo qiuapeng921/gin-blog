@@ -8,7 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"path/filepath"
-	"time"
 )
 
 func InitTemplate(router *gin.Engine) {
@@ -51,8 +50,7 @@ func loadTemplates(templatesDir string) multitemplate.Renderer {
 
 // 时间戳转时间格式
 func formatDate(timestamp int64) string {
-	layout := "2006-01-02 15:04:05"
-	return time.Unix(timestamp, 0).Format(layout)
+	return system.FormatDate(timestamp)
 }
 
 func markdownToHtml(markdown string) string {

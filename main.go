@@ -34,9 +34,6 @@ func main() {
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
 	}
-
-	log.Println("Go Http Server Start Successful")
-	log.Println("Port:" + endPoint + ",Pid:" + fmt.Sprintf("%d", os.Getpid()))
-
+	log.Printf("weclome use gin,地址:http://127.0.0.1:%s \n", os.Getenv("HTTP_PORT"))
 	_ = server.ListenAndServe()
 }

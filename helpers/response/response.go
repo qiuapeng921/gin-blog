@@ -41,11 +41,15 @@ func (wrapper *Wrapper) View(name string, data ...interface{}) {
 }
 
 func (wrapper *Wrapper) Success(data ...interface{}) {
-	wrapper.Response(http.StatusOK, http.StatusOK, data)
+	responseData := interface{}(nil)
+	if len(data) > 0 {
+		responseData = data[0]
+	}
+	wrapper.Response(http.StatusOK, http.StatusOK, responseData)
 	return
 }
 
-func (wrapper *Wrapper) Error(errCode ...int) {
-	wrapper.Response(http.StatusOK, http.StatusOK, errCode)
+func (wrapper *Wrapper) Error(errCode int) {
+	wrapper.Response(http.StatusOK, errCode, "")
 	return
 }

@@ -9,7 +9,7 @@ import (
 )
 
 func SetupRouter(router *gin.Engine) {
-	router.Use(middleware.JWT())
+	router.Use(middleware.RequestLog())
 
 	router.GET("/", controller.Index)
 	router.GET("/ws", socket.WsHandler)
