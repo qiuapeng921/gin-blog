@@ -2,10 +2,15 @@ package main
 
 import (
 	"fmt"
-	"gin-blog/helpers/system"
+	"gin-blog/app/crontab"
+	"gin-blog/helpers/logging"
+	"gin-blog/helpers/pool/gredis"
+	"gin-blog/helpers/pool/grom"
+	"gin-blog/helpers/pool/rabbit"
 	"gin-blog/helpers/templates"
 	"gin-blog/routers"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"log"
 	"net/http"
 	"os"
@@ -13,7 +18,17 @@ import (
 )
 
 func init() {
-	system.SetUp()
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	logging.Setup()
+	crontab.InitCronTab()
+	grom.SetUpOrm()
+	gredis.SetupRedis()
+	//mongo.SetupMongo()
+	//elastic.SetupElastic()
+	rabbit.SetupRabbitMq()
 }
 
 func main() {
