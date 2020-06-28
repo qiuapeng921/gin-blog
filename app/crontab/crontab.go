@@ -7,6 +7,6 @@ import (
 
 func InitCronTab() {
 	cronTab := cron.New()
-	cronTab.AddFunc("0 */1 * * * *", cronfunc.HandleTest)
+	_ = cronTab.AddFunc("0 */1 * * * *", cronfunc.HandleTest)
 	cronTab.Start()
 }
