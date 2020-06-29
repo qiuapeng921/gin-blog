@@ -17,6 +17,7 @@ require (
 	github.com/olivere/elastic v6.2.30+incompatible // indirect
 	github.com/olivere/elastic/v7 v7.0.14
 	github.com/robfig/cron v1.2.0
+	github.com/rs/xid v1.2.1
 	github.com/russross/blackfriday v1.5.2
 	github.com/streadway/amqp v0.0.0-20200108173154-1c71cc93ed71
 	go.mongodb.org/mongo-driver v1.3.2
