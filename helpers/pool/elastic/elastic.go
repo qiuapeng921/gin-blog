@@ -11,12 +11,13 @@ var client *elastic.Client
 
 func SetupElastic() {
 	var err error
-	client, err = elastic.NewClient(elastic.SetURL(os.Getenv("ELASTIC_HOST")))
+	host := os.Getenv("ELASTIC_HOST")
+	client, err = elastic.NewClient(elastic.SetSniff(false), elastic.SetURL(host))
 	if err != nil {
 		panic(err.Error())
 	}
 	ctx := context.Background()
-	_, _, err = client.Ping(os.Getenv("ELASTIC_HOST")).Do(ctx)
+	_, _, err = client.Ping(host).Do(ctx)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -28,10 +29,9 @@ func GetConn() *elastic.Client {
 }
 
 //创建
-func Create(Database, Type string, Data interface{}) (*elastic.IndexResponse, error) {
+func Create(Database string, Data interface{}) (*elastic.IndexResponse, error) {
 	return client.Index().
 		Index(Database).
-		Type(Type).
 		BodyJson(Data).
 		Do(context.Background())
 }

@@ -23,11 +23,11 @@ func SetupRedis() *redis.Client {
 		MaxRetries:  Idle,             // 最大重试次数
 		IdleTimeout: 10 * time.Second, // 空闲链接超时时间
 	})
-	pong, err := client.Ping().Result()
+	_, err := client.Ping().Result()
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("redis连接成功", pong)
+	fmt.Println("redis连接成功")
 	return client
 }
 
