@@ -4,5 +4,5 @@ import "gin-blog/helpers/pool/grom"
 
 var (
 	Table = "tags"
-	Model = grom.GetConn().Table(Table)
+	Model = grom.GetOrm().Table(Table)
 )

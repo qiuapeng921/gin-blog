@@ -29,7 +29,7 @@ func SetupRouter(router *gin.Engine) {
 	})
 
 	router.GET("/order", func(context *gin.Context) {
-		redisClient := gredis.GetConn()
+		redisClient := gredis.GetRedis()
 		err := redisClient.Watch(func(tx *redis.Tx) error {
 			num := rand.Intn(5) + 1
 			orderNumber, _ := tx.Get("order_number").Int()

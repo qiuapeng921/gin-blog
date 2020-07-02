@@ -37,7 +37,7 @@ func ArticleInfo(c *gin.Context) {
 
 func Markdown(c *gin.Context) {
 	var category []categorys.Entity
-	grom.GetConn().Find(&category)
+	grom.GetOrm().Find(&category)
 	response.Context(c).View("markdown", gin.H{
 		"category": category,
 	})
@@ -55,6 +55,6 @@ func SaveArticle(c *gin.Context) {
 	articleModel.CategoryId = form.Category
 	articleModel.CreateTime = time.Now().Unix()
 	articleModel.UpdateTime = time.Now().Unix()
-	grom.GetConn().Save(&articleModel)
+	grom.GetOrm().Save(&articleModel)
 	c.Redirect(http.StatusMovedPermanently, "/")
 }

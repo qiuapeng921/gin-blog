@@ -6,7 +6,7 @@ import (
 
 var (
 	Table = "users"
-	Model = grom.GetConn()
+	Model = grom.GetOrm()
 )
 
 func FindOne(query interface{})  (Entity, error) {

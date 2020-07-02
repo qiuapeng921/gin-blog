@@ -2,6 +2,7 @@ package gredis
 
 import (
 	"fmt"
+	"gin-blog/helpers/pool/elastic"
 	"github.com/go-redis/redis/v7"
 	"os"
 	"strconv"
@@ -31,6 +32,6 @@ func SetupRedis() *redis.Client {
 	return client
 }
 
-func GetConn() *redis.Client {
+func GetRedis() *redis.Client {
 	return client
 }

@@ -10,7 +10,7 @@ type ArticleService struct {
 }
 
 func (a *ArticleService) GetList(request request.IndexRequest) (article []articles.Entity) {
-	orm := grom.GetConn()
+	orm := grom.GetOrm()
 	if request.Id > 0 {
 		orm = orm.Where("category_id = ?", request.Id)
 	}
@@ -22,6 +22,6 @@ func (a *ArticleService) GetList(request request.IndexRequest) (article []articl
 }
 
 func (a *ArticleService) GetOne(id int) (article articles.Entity) {
-	grom.GetConn().Where("id = ?", id).Find(&article)
+	grom.GetOrm().Where("id = ?", id).Find(&article)
 	return article
 }

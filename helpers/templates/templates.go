@@ -58,6 +58,6 @@ func markdownToHtml(markdown string) string {
 }
 
 func getCategory() (category []categorys.Entity) {
-	grom.GetConn().Find(&category)
+	grom.GetOrm().Find(&category)
 	return category
 }

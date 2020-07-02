@@ -31,6 +31,6 @@ func SetUpOrm() {
 	fmt.Println("mysql连接成功")
 }
 
-func GetConn() *gorm.DB {
+func GetOrm() *gorm.DB {
 	return client
 }

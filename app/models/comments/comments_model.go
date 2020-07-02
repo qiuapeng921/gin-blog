@@ -6,5 +6,5 @@ import (
 
 var (
 	Table = "comments"
-	Model = grom.GetConn().Table(Table)
+	Model = grom.GetOrm().Table(Table)
 )

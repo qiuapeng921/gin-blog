@@ -39,7 +39,7 @@ func SetupMongo() {
 	fmt.Println("mongodb连接成功")
 }
 
-func GetMongoDb() *mongo.Client {
+func GetMongo() *mongo.Client {
 	return client
 }
 

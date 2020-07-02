@@ -24,7 +24,7 @@ func SetupElastic() {
 	fmt.Println("elastic连接成功")
 }
 
-func GetConn() *elastic.Client {
+func GetElastic() *elastic.Client {
 	return client
 }
 
