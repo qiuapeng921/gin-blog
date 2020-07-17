@@ -2,7 +2,6 @@ package gredis
 
 import (
 	"fmt"
-	"gin-blog/helpers/pool/elastic"
 	"github.com/go-redis/redis/v7"
 	"os"
 	"strconv"

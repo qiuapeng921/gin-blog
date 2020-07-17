@@ -19,7 +19,7 @@ func AuthInit(client *gorm.DB) {
 		return
 	}
 	// 这里也可以使用原生字符串方式
-	Enforcer, err = casbin.NewEnforcer("auth_model.conf", Adapter)
+	Enforcer, err = casbin.NewEnforcer("config/auth_model.conf", Adapter)
 	if err != nil {
 		panic("加载配置失败" + err.Error())
 	}
