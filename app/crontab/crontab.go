@@ -8,5 +8,8 @@ import (
 func InitCronTab() {
 	cronTab := cron.New()
 	_ = cronTab.AddFunc("0 */1 * * * *", cronfunc.HandleTest)
+
+	_ = cronTab.AddFunc("*/1 * * * * *", cronfunc.TestPushMessage)
+	_ = cronTab.AddFunc("*/1 * * * * *", cronfunc.TestPopMessage)
 	cronTab.Start()
 }
