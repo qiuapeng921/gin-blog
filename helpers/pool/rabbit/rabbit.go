@@ -60,6 +60,7 @@ func Publish(exchangeName, queueName, data string) error {
 		fmt.Println(err.Error())
 		return err
 	}
+	defer channel.Close()
 	// 发送任务消息
 	err = channel.Publish(exchangeName, queue.Name, false, false, amqp.Publishing{
 		Headers:         amqp.Table{},
